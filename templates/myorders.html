@@ -1,0 +1,35 @@
+<ion-view view-title="My Orders">
+	<ion-content>
+    <ion-list>
+			<ion-item>
+				<!-- <h2>Your pending orders:</h2> -->
+				<ion-list>
+					<ion-item ng-repeat="ord in data.orders">
+						<div class="row">
+							<div class="col-50">Order Number :</div>
+							<div class="col-50">#{{ord.order_number}}</div>
+						</div>
+						<div class="row">
+							<div class="col-50">Date :</div>
+							<div class="col-50">2016-03-05</div>
+						</div>
+						<div class="row">
+							<div class="col-50">Time :</div>
+							<div class="col-50">10:00 ~ 12:00</div>
+						</div>
+						<div class="row">
+							<div class="col-50">Status :</div>
+							<div class="col-50">
+								<div>{{ord.status}}</div>
+							</div>
+						</div>
+						<!--<div class="row">
+							<div class="col-50">Feedback :</div>
+							<div class="col-50"><feedback ng-model="ord.feedback"></feedback></div>
+						</div>-->
+					</ion-item>
+				</ion-list>
+			</ion-item>
+		</ion-list>
+  </ion-content>
+</ion-view>

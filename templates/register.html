@@ -1,0 +1,48 @@
+<ion-view view-title="Register">
+	<ion-header-bar class="bar-positive">
+		<h1 class="title">Register</h1>
+	</ion-header-bar>
+	<ion-content>
+		<ion-list>
+			<form name="dataform">
+				<label class="item item-input item-floating-label">
+					<span class="input-label">First Name</span>
+					<input type="text" ng-model="data.firstname" name="firstname" placeholder="First Name" minlength="2" required/>
+					<span class="error-span" ng-if="dataform.firstname.$error.required">First name is empty!</span>
+					<span class="error-span" ng-if="dataform.firstname.$error.minlength">Must two or more character!</span>
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Last Name</span>
+					<input type="text" ng-model="data.lastname" placeholder="Last Name"/>
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Email Address</span>
+					<input type="email" ng-model="data.email" name="email" placeholder="Email Address" required autocomplete='off'/>
+					<span class="error-span" ng-if="dataform.email.$error.required">Email address is empty!</span>
+					<span class="error-span" ng-if="dataform.email.$error.email">Email address is invalid!</span>
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Password</span>
+					<input type="password" ng-model="data.password" name="password" placeholder="Password" minlength="4" required/>
+					<span class="error-span" ng-if="dataform.password.$error.required">Password is empty!</span>
+					<span class="error-span" ng-if="dataform.password.$error.minlength">Password is too short!</span>
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Repeat Password</span>
+					<input type="password" ng-model="data.password1" placeholder="Repeat Password" minlength="2" required/>
+					<span class="error-span" ng-if="view.mismatched">Passwords are mismatched.</span>
+				</label>
+			</form>
+			<ion-item>
+				<div class="button-panel row">
+					<div class="col-50">
+						<button class="button button-block button-positive" ng-click="register();">Register</button>
+					</div>
+					<div class="col-50">
+						<button class="button button-block button-positive" ng-click="goToLogin();">Cancel</button>
+					</div>
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

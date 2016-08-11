@@ -1,0 +1,39 @@
+<ion-view view-title="Delivery">
+	<ion-content>
+    <ion-list>
+			<ion-item>
+				When would you like your order to be delivered?
+			</ion-item>
+			<ion-item class="item-stacked-label">
+				<div class="row">
+					<div class="col-50">
+						<span>Date</span>
+						<input type="date" ng-model="data.dateval" style="border: 1px solid #ddd;width:100%;">
+					</div>
+					<div class="col-25">
+						<span>From</span>
+						<input type="time" ng-model="data.stime" style="border: 1px solid #ddd;width:100%;">
+					</div>
+					<div class="col-25">
+						<span>To</span>
+						<input type="time" ng-model="data.etime" style="border: 1px solid #ddd;width:100%;">
+					</div>
+				</div>
+			</ion-item>
+			<ion-item class="item-stacked-label">
+				<span class="input-label">Any delivery notes?</span>
+				<textarea rows="7" style="width: 100%;"></textarea>
+			</ion-item>
+		</ion-list>
+  </ion-content>
+	<ion-footer-bar align-title="left" class="bar-stable text-right">
+		<button class="button button-right button-positive">
+			<i class="icon ion-ios-arrow-back"></i>
+			BACK
+		</button>
+		<button class="button button-right button-positive" ng-click="goToDashboard();">
+			<i class="icon ion-ios-cart"></i>
+			CONFIRM ORDER
+		</button>
+	</ion-footer-bar>
+</ion-view>

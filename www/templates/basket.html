@@ -1,0 +1,46 @@
+<ion-view view-title="Shopping List">
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-cart" ng-click="showCart();" style="margin-top:-15px;line-height:0;font-size: smaller;">
+			<i class="icon ion-android-cart button-top-icon"></i> <br>£{{view.total}}
+		</button>
+  </ion-nav-buttons>
+
+	<ion-content ng-show="view.pageNum == 0">
+    <ion-list>
+			<ion-item>
+				<h1>Shopping List:</h1>
+				<h2>What do you need?</h2>
+			</ion-item>
+			<ion-item>
+				<ion-checkbox ng-repeat="c in data.cates" ng-model="c.checked">{{c.name}}</ion-checkbox>
+			</ion-item>
+			<ion-item class="text-right">
+				<button class="button button-right button-positive" ng-click="nextPage();" ng-disabled="!view.isReadyCart">
+					<i class="icon ion-ios-cart"></i> 
+					<span ng-show="!view.isReadyCart">Loading Products ...</span>
+					<span ng-show="view.isReadyCart">Shop</span>
+				</button>
+			</ion-item>
+		</ion-list>
+  </ion-content>
+	
+	<ion-content ng-repeat="c in data.selectedCates track by $index" ng-show="view.pageNum == $index + 1">
+		<div class="row" ng-repeat="s in c.products track by $index" ng-if="$index % 2 == 0">
+			<div class="col col-50" ng-repeat="b in [0, 1]" ng-if="c.products[$parent.$parent.$index + b]">
+				<img class="subcate-image" ng-src="{{c.products[$parent.$parent.$index + b].images[0].src}}" ng-click="showProduct(c.products[$parent.$parent.$index + b]);"/><br/>
+				{{c.products[$parent.$parent.$index + b].title}}<br/>
+				{{c.products[$parent.$parent.$index + b].in_stock ? '' : '(Out of Stock)'}}<br/>
+			</div>
+		</div>
+  </ion-content>
+	
+	<ion-footer-bar align-title="left" class="bar-stable" ng-show="view.pageNum > 0">
+		<ion-slides pager (change)="onSlideChanged($event)" (move)="onSlideMove($event)" loop="false" autoplay="false" show-pager="false">
+			<ion-slide ng-repeat="s in data.selectedCates" class="cate-tab-normal" ng-class="{'cate-tab-active':$index == view.pageNum - 1 && !view.isLastPage, 'cate-tab-passed':$index < view.pageNum - 1 || view.isLastPage}">
+				{{s.name}}
+			</ion-slide>
+		</ion-slides>
+		<button class="button button-right button-positive" ng-click="nextPage();" ng-if="!view.isLastPage"><i class="icon ion-checkmark"></i></button>
+		<button class="button button-right button-assertive" ng-click="shopping();" ng-if="view.isLastPage"><i class="icon ion-card"></i></button>
+	</ion-footer-bar>
+</ion-view>

@@ -1,0 +1,36 @@
+<ion-view view-title="Login">
+	<ion-header-bar class="bar-positive">
+		<h1 class="title">Log In</h1>
+	</ion-header-bar>
+	<ion-content>
+		<ion-list>
+			<ion-item class="login-avatar text-center">
+				<img src="../img/ionic.png"/>
+			</ion-item>
+			<form name="dataform">
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Email</span>
+					<input type="email" ng-model="data.email" name="email" placeholder="Email" required/>
+					<span class="error-span" ng-if="dataform.email.$error.required">Email address is empty!</span>
+					<span class="error-span" ng-if="dataform.email.$error.email">Email address is invalid!</span>
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Password</span>
+					<input type="password" ng-model="data.password" name="password" placeholder="Password" minlength="4" required/>
+					<span class="error-span" ng-if="dataform.password.$error.required">Password is empty!</span>
+					<span class="error-span" ng-if="dataform.password.$error.minlength">Password is too short!</span>
+				</label>
+			</form>
+			<ion-item>
+				<div class="button-panel row">
+					<div class="col-50">
+						<button class="button button-block button-positive" ng-click="login();">Log in</button>
+					</div>
+					<div class="col-50">
+						<button class="button button-block button-positive" ng-click="goToRegister();">Register</button>
+					</div>
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

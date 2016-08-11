@@ -1,0 +1,62 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Cart</h1>
+    <button class="button button-clear button-primary" ng-click="cartModal.hide();">Close</button>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>
+			<ion-item>
+				<h3>CART</h3>
+			</ion-item>
+			<ion-item ng-if="!data.addedProducts.length">
+				<h3>There are no anythings in the cart.</h3>
+			</ion-item>
+			<ion-item ng-if="data.addedProducts.length">
+				<ion-list ng-repeat="a in data.addedProducts track by $index">
+					<ion-item class="item-divider item-icon-right">
+						{{a.title}}
+						<i class="icon ion-close-round" ng-click="removeFromCart($index);" style="font-size: 18px;"></i>
+					</ion-item>
+					<ion-item class="item-icon-right">
+						Price
+						<span class="item-note">{{a.price}}</span>
+					</ion-item>
+					<ion-item class="item-icon-right">
+						Quantity
+						<span class="item-note">{{a.quantity}}</span>
+					</ion-item>
+					<ion-item class="item-icon-right">
+						Total
+						<span class="item-note">{{a.price * a.quantity}}</span>
+					</ion-item>
+				</ion-list>
+			</ion-item>
+			<ion-item class="item-input-inset">
+				<label class="item-input-wrapper">
+					<input type="text" placeholder="Coupon Code">
+				</label>
+				<button class="button button-small button-positive">Apply Coupon</button>
+			</ion-item>
+			<ion-item>
+				<h3>BASKET TOTALS</h3>
+			</ion-item>
+			<ion-item>
+				<ion-list>
+					<ion-item class="item-icon-right">
+						Subtotal: 
+						<span class="item-note"></span>
+					</ion-item>
+					<ion-item class="item-icon-right">
+						Shipping: 
+						<span class="item-note"></span>
+					</ion-item>
+					<ion-item class="item-icon-right">
+						Total: 
+						<span class="item-note"></span>
+					</ion-item>
+				</ion-list>
+			</ion-item>
+			
+		</ion-list>
+  </ion-content>
+</ion-modal-view>
